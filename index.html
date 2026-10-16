@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Raden Ameer Hanafi</title>
+<meta name="description" content="Raden Ameer Hanafi: senior data operations specialist in Kuala Lumpur who builds data pipelines at work and software with AI agents on the side.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one 1080px column; a query console opens the page, the featured build sits in a full-bleed band, everything else in a quiet ledger rhythm. */
+:root {
+  --bg: #eef1f3;
+  --surface: #ffffff;
+  --ink: #142029;
+  --muted: #56636d;
+  --line: #d3dae0;
+  --accent: #0b6e69;
+  --accent-soft: #d6ece9;
+  --mars: #b4472a;
+  --mars-soft: #f6e1d9;
+  --console: #0f1a21;
+  --console-ink: #d8e4e8;
+  --console-dim: #7c9099;
+  --console-key: #6fd3c6;
+  --console-str: #f0a37f;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.625rem;
+  --step-3: 2.25rem;
+  --step-4: clamp(2.5rem, 6vw, 4rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1418; --surface: #152027; --ink: #e3eaee; --muted: #93a3ad; --line: #26343d;
+    --accent: #4cc3b6; --accent-soft: #143633; --mars: #ec8a68; --mars-soft: #3a2119;
+    --console: #070d10; --console-ink: #d8e4e8; --console-dim: #6f838c; --console-key: #6fd3c6; --console-str: #f0a37f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1418; --surface: #152027; --ink: #e3eaee; --muted: #93a3ad; --line: #26343d;
+  --accent: #4cc3b6; --accent-soft: #143633; --mars: #ec8a68; --mars-soft: #3a2119;
+  --console: #070d10; --console-ink: #d8e4e8; --console-dim: #6f838c; --console-key: #6fd3c6; --console-str: #f0a37f;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 var(--step-0)/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+p { margin: 0; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-inline: 20px; }
+.label { font: 600 var(--step--1)/1.3 var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.mono { font-family: var(--mono); }
+.num { font-variant-numeric: tabular-nums; }
+button { font: inherit; color: inherit; cursor: pointer; }
+
+/* nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; gap: 20px; padding-block: 12px; }
+.brand { font: 700 var(--step-0) var(--display); color: var(--ink); text-decoration: none; margin-right: auto; }
+.nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: var(--step--1); font-weight: 500; }
+.nav-links a:hover { color: var(--ink); }
+.theme-btn { background: none; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: var(--step--1); color: var(--muted); }
+@media (max-width: 640px) { .nav-links { display: none; } }
+
+/* hero */
+.hero { padding-block: 56px 40px; display: grid; grid-template-columns: 1fr 1.15fr; gap: 48px; align-items: start; }
+.hero > * { min-width: 0; }
+.hero h1 { font-size: var(--step-4); font-weight: 800; margin-block: 14px 18px; }
+.hero h1 span { color: var(--accent); }
+.hero .lede { font-size: var(--step-1); color: var(--muted); max-width: 32ch; line-height: 1.45; }
+.hero .facts { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 24px; font-size: var(--step--1); color: var(--muted); }
+.hero .facts b { color: var(--ink); font-weight: 600; }
+.hero .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 8px; font-weight: 600; font-size: var(--step--1); text-decoration: none; border: 1px solid var(--ink); }
+.btn-solid { background: var(--ink); color: var(--bg); }
+.btn-ghost { color: var(--ink); }
+@media (max-width: 860px) { .hero { grid-template-columns: 1fr; gap: 32px; padding-block: 36px 24px; } }
+
+/* console */
+.console { background: var(--console); color: var(--console-ink); border-radius: 12px; font: 400 0.84rem/1.55 var(--mono); overflow: hidden; box-shadow: 0 20px 50px -24px rgba(10, 20, 26, 0.55); }
+.console-bar { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.08); color: var(--console-dim); font-size: 0.75rem; }
+.console-bar .dot { width: 9px; height: 9px; border-radius: 50%; background: #3a4a52; }
+.console-bar .dot:first-child { background: #e0705a; }
+.console-bar span:last-child { margin-left: auto; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 14px 0; }
+.chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: var(--console-ink); border-radius: 6px; padding: 3px 9px; font: 400 0.75rem var(--mono); }
+.chip:hover, .chip[aria-pressed="true"] { border-color: var(--console-key); color: var(--console-key); }
+.console form { display: flex; align-items: center; gap: 8px; padding: 12px 14px; }
+.console form label { color: var(--console-key); }
+.console input { flex: 1; min-width: 0; background: transparent; border: 0; color: var(--console-ink); font: inherit; outline: none; }
+.console input::placeholder { color: var(--console-dim); }
+.console-out { padding: 0 14px 14px; min-height: 236px; max-height: 330px; overflow: auto; }
+.console-out .sql { color: var(--console-dim); margin-bottom: 8px; white-space: pre-wrap; }
+.console-out .sql .k { color: var(--console-key); }
+.console-out table { border-collapse: collapse; width: 100%; font-size: 0.78rem; }
+.console-out th { text-align: left; color: var(--console-dim); font-weight: 400; border-bottom: 1px dashed rgba(255,255,255,0.18); padding: 3px 12px 3px 0; white-space: nowrap; }
+.console-out td { padding: 4px 12px 4px 0; vertical-align: top; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.console-out td.s { color: var(--console-str); }
+.console-out .meta { color: var(--console-dim); margin-top: 8px; font-size: 0.72rem; }
+.console-out .row-in { animation: rowIn .35s ease both; }
+@keyframes rowIn { from { opacity: .2; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+
+/* sections */
+section { padding-block: 64px; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-bottom: 28px; }
+.sec-head h2 { font-size: var(--step-3); font-weight: 700; }
+.sec-head p { color: var(--muted); max-width: 52ch; }
+
+/* impact */
+.impact { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+.impact > * { min-width: 0; }
+.race { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 16px; }
+.race-row { display: grid; grid-template-columns: 96px 1fr 84px; gap: 12px; align-items: center; font-size: var(--step--1); }
+.race-track { height: 14px; background: var(--bg); border-radius: 4px; overflow: hidden; }
+.race-fill { height: 100%; width: 0; border-radius: 4px; }
+.race-fill.before { background: var(--muted); }
+.race-fill.after { background: var(--accent); }
+.race-time { font-family: var(--mono); text-align: right; }
+.race-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: var(--step--1); }
+.race-btn { background: var(--accent); color: var(--bg); border: 0; border-radius: 6px; padding: 7px 14px; font-weight: 600; font-size: var(--step--1); }
+.impact-list { display: grid; gap: 18px; }
+.impact-list div { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: baseline; }
+.impact-list .big { font: 700 var(--step-2) var(--display); color: var(--accent); min-width: 4.2ch; }
+.impact-list p { color: var(--muted); }
+@media (max-width: 860px) { .impact { grid-template-columns: 1fr; } .race-row { grid-template-columns: 74px 1fr 70px; } }
+
+/* featured */
+.featured { background: var(--surface); border-block: 1px solid var(--line); }
+.feat-top { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; }
+.feat-top > * { min-width: 0; }
+.tag { display: inline-block; font: 600 0.72rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
+.tag-mars { background: var(--mars-soft); color: var(--mars); }
+.tag-ai { background: var(--accent-soft); color: var(--accent); }
+.feat-top h2 { font-size: var(--step-4); font-weight: 800; margin-block: 12px 14px; }
+.feat-top .lede { font-size: var(--step-1); color: var(--muted); line-height: 1.5; max-width: 44ch; }
+.feat-top ul { margin: 20px 0 0; padding-left: 18px; color: var(--muted); display: grid; gap: 6px; }
+.feat-top ul b { color: var(--ink); font-weight: 600; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; align-self: start; }
+.stat { background: var(--surface); padding: 18px 16px; display: grid; gap: 2px; }
+.stat b { font: 700 var(--step-3) var(--display); font-variant-numeric: tabular-nums; }
+.stat span { font-size: var(--step--1); color: var(--muted); line-height: 1.35; }
+.stat.wide { grid-column: span 3; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.stat.wide b { font-size: var(--step-1); }
+@media (max-width: 860px) { .feat-top { grid-template-columns: 1fr; } }
+@media (max-width: 420px) { .stats { grid-template-columns: repeat(2, 1fr); } .stat.wide { grid-column: span 2; } }
+
+.arch { margin-top: 44px; }
+.arch-flow { display: flex; align-items: stretch; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+.arch-node { flex: 1 1 180px; border: 1px solid var(--line); border-radius: 10px; padding: 14px; background: var(--bg); }
+.arch-node h3 { font-size: var(--step-0); margin-bottom: 4px; }
+.arch-node p { font-size: var(--step--1); color: var(--muted); line-height: 1.45; }
+.arch-arrow { align-self: center; color: var(--muted); font-family: var(--mono); }
+@media (max-width: 700px) { .arch-arrow { display: none; } }
+
+/* workflow */
+.flow { margin-top: 52px; }
+.flow h3 { font-size: var(--step-2); margin-block: 8px 6px; }
+.flow > p { color: var(--muted); max-width: 64ch; }
+.steps { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 22px; counter-reset: step; }
+.step { border: 1px solid var(--line); background: var(--bg); border-radius: 999px; padding: 6px 14px 6px 8px; font-size: var(--step--1); font-weight: 500; display: inline-flex; align-items: center; gap: 8px; }
+.step::before { counter-increment: step; content: counter(step); font: 600 0.7rem var(--mono); width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: var(--surface); border: 1px solid var(--line); }
+.step[aria-selected="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.step[aria-selected="true"]::before { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.step-panel { margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.step-panel > div { background: var(--surface); padding: 20px; min-width: 0; }
+.step-panel .who { margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.step-panel .who i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.step-panel .me i { background: var(--mars); }
+.step-panel .ai i { background: var(--accent); }
+.step-panel p { color: var(--ink); }
+.step-panel code { font: 400 0.85em var(--mono); background: var(--bg); padding: 1px 5px; border-radius: 4px; }
+.step-nav { display: flex; gap: 8px; margin-top: 12px; justify-content: flex-end; }
+.step-nav button { background: none; border: 1px solid var(--line); border-radius: 6px; padding: 5px 12px; font-size: var(--step--1); }
+@media (max-width: 700px) { .step-panel { grid-template-columns: 1fr; } }
+
+.rules { margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.rule { border-top: 2px solid var(--ink); padding-top: 12px; }
+.rule h4 { margin: 0 0 4px; font: 600 var(--step-0) var(--body); }
+.rule p { font-size: var(--step--1); color: var(--muted); }
+
+.releases { margin-top: 44px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.rel { border: 1px solid var(--line); border-radius: 10px; padding: 14px; background: var(--bg); }
+.rel .v { font: 600 var(--step-1) var(--mono); color: var(--mars); }
+.rel .d { font-size: var(--step--1); color: var(--muted); }
+.rel p { font-size: var(--step--1); margin-top: 6px; }
+
+/* projects */
+.filters { display: flex; gap: 6px; flex-wrap: wrap; }
+.filter { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 5px 14px; font-size: var(--step--1); font-weight: 500; }
+.filter[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.proj { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 12px; transition: opacity .25s, transform .25s; min-width: 0; }
+.proj.dim { opacity: 0.32; transform: scale(0.985); }
+.proj h3 { font-size: var(--step-2); }
+.proj .what { color: var(--muted); }
+.proj .ai-note { font-size: var(--step--1); border-left: 2px solid var(--accent); padding-left: 10px; }
+.proj .ai-note b { color: var(--accent); font-weight: 600; }
+.proj .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.proj .stack { font: 400 0.75rem var(--mono); color: var(--muted); margin-top: auto; padding-top: 10px; border-top: 1px dashed var(--line); }
+.proj .links { display: flex; gap: 14px; font-size: var(--step--1); font-weight: 600; flex-wrap: wrap; }
+@media (max-width: 900px) { .projects { grid-template-columns: 1fr; } }
+
+/* career */
+.career { border-top: 1px solid var(--line); }
+.job { border-bottom: 1px solid var(--line); }
+.job > button { width: 100%; background: none; border: 0; text-align: left; padding: 18px 0; display: grid; grid-template-columns: 150px 1fr auto; gap: 16px; align-items: baseline; }
+.job .when { font: 400 var(--step--1) var(--mono); color: var(--muted); }
+.job .role { font: 700 var(--step-1) var(--display); }
+.job .org { display: block; font: 400 var(--step--1) var(--body); color: var(--muted); margin-top: 2px; }
+.job .pm { font-family: var(--mono); color: var(--muted); transition: transform .2s; }
+.job[data-open="true"] .pm { transform: rotate(45deg); }
+.job ul { margin: 0; padding: 0 0 20px calc(150px + 16px + 18px); display: grid; gap: 6px; color: var(--muted); max-width: 900px; }
+@media (max-width: 640px) { .job > button { grid-template-columns: 1fr auto; } .job .when { grid-column: 1 / -1; } .job ul { padding-left: 18px; } }
+
+/* skills */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px 32px; }
+.skills h3 { font: 600 var(--step--1)/1.3 var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 10px; }
+.skills ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.skills li { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 3px 10px; font-size: var(--step--1); }
+.edu { margin-top: 36px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; grid-template-columns: auto 1fr; gap: 6px 24px; }
+.edu h3 { font-size: var(--step-1); }
+.edu p { color: var(--muted); grid-column: 2; }
+@media (max-width: 640px) { .edu { grid-template-columns: 1fr; } .edu p { grid-column: 1; } }
+
+/* contact */
+.contact { background: var(--ink); color: var(--bg); }
+.contact h2 { font-size: var(--step-4); font-weight: 800; max-width: 16ch; }
+.contact p { color: color-mix(in srgb, var(--bg) 70%, var(--ink)); margin-top: 14px; max-width: 52ch; }
+.contact-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; align-items: center; }
+.email { font: 600 var(--step-1) var(--mono); user-select: all; word-break: break-all; }
+.copy { background: var(--accent); color: var(--ink); border: 0; border-radius: 6px; padding: 7px 14px; font-weight: 600; font-size: var(--step--1); }
+.contact a { color: var(--bg); }
+.contact .links { display: flex; gap: 22px; margin-top: 22px; flex-wrap: wrap; font-weight: 600; }
+footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="brand" href="#top">Raden Ameer</a>
+    <div class="nav-links">
+      <a href="#impact">Data work</a>
+      <a href="#marscolony">Marscolony</a>
+      <a href="#projects">Projects</a>
+      <a href="#career">Career</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch colour theme">Theme</button>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="wrap hero">
+    <div>
+      <p class="label">Senior Data Operation Specialist · Kuala Lumpur</p>
+      <h1>I build data pipelines at work, and <span>software with AI agents</span> after hours.</h1>
+      <p class="lede">Four years of SQL, BigQuery and Power BI for marketing and revenue teams. On the side I ship full apps by directing Claude Code through a spec-first, test-first workflow.</p>
+      <div class="facts">
+        <span><b>5+ h → &lt;15 min</b> pipeline refresh</span>
+        <span><b>BigQuery · Databricks · Snowflake</b></span>
+        <span><b>B.CS Data Science</b>, MMU</span>
+      </div>
+      <div class="cta">
+        <a class="btn btn-solid" href="#marscolony">See the featured build</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="console" aria-label="Portfolio query console">
+      <div class="console-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span>portfolio.raden : query</span></div>
+      <div class="chips" id="chips" role="group" aria-label="Example queries"></div>
+      <form id="qform" autocomplete="off">
+        <label for="q">sql&gt;</label>
+        <input id="q" name="q" type="text" spellcheck="false" placeholder="try: projects, ai, skills, career, contact">
+      </form>
+      <div class="console-out" id="out" aria-live="polite"></div>
+    </div>
+  </header>
+
+  <section id="impact">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>The day job: data that arrives on time</h2>
+        <p>At 2X Marketing I run the data layer behind marketing and sales analytics: warehouse migrations, ETL and API pipelines, and the dashboards on top.</p>
+      </div>
+      <div class="impact">
+        <div class="race" aria-label="Pipeline refresh time, before and after optimisation">
+          <p class="label">Daily refresh, one client workspace</p>
+          <div class="race-row"><span>Before</span><div class="race-track"><div class="race-fill before" id="fillBefore"></div></div><span class="race-time num" id="tBefore">5h 00m</span></div>
+          <div class="race-row"><span>After</span><div class="race-track"><div class="race-fill after" id="fillAfter"></div></div><span class="race-time num" id="tAfter">0h 15m</span></div>
+          <div class="race-foot">
+            <span>Optimised SQL transformations and warehouse workloads, with no manual steps left.</span>
+            <button class="race-btn" id="raceBtn" type="button">Run both refreshes</button>
+          </div>
+        </div>
+        <div class="impact-list">
+          <div><span class="big">3</span><p>cloud warehouses (BigQuery, Databricks, Snowflake) in multi-workspace migrations I led, with Power BI models redesigned on top.</p></div>
+          <div><span class="big">20×</span><p>faster refreshes after reworking SQL transformations and warehouse workloads.</p></div>
+          <div><span class="big">AI</span><p>in production analytics: predictive lead scoring, forecasting and automation projects for client revenue teams.</p></div>
+          <div><span class="big">Team</span><p>I lead a sub-team, mentor engineers, run hiring, and wrote the competency framework they grow against.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="marscolony" class="featured">
+    <div class="wrap">
+      <div class="feat-top">
+        <div>
+          <span class="tag tag-mars">Featured · newest repo</span>
+          <h2>Marscolony</h2>
+          <p class="lede">A heavy Euro board game (Vital Lacerda's <em>On Mars</em>) rebuilt for the browser so my friends and I can play it on phones, tablets or one shared screen. Every move is checked by a rules engine, and a bot can take any seat.</p>
+          <ul>
+            <li><b>Rules engine in pure Python</b> that runs in the browser through Pyodide, so there is no game server to pay for.</li>
+            <li><b>Online play</b> through a Cloudflare Worker and a D1 move store, with undo, live leaderboard and Mission tracker.</li>
+            <li><b>A bot</b> tuned by a scorer that plays batches of full games to check the rules and measure its strength.</li>
+          </ul>
+        </div>
+        <div class="stats">
+          <div class="stat"><b class="num">14</b><span>days from first commit to v1.2</span></div>
+          <div class="stat"><b class="num">377</b><span>commits</span></div>
+          <div class="stat"><b class="num">187</b><span>merged pull requests</span></div>
+          <div class="stat"><b class="num">17</b><span>architecture decision records</span></div>
+          <div class="stat"><b class="num">95</b><span>test files</span></div>
+          <div class="stat"><b class="num">36</b><span>thousand lines of Python + JS</span></div>
+          <div class="stat wide"><span>Private repo: the game's art belongs to its publisher.</span><b>Demo on request</b></div>
+        </div>
+      </div>
+
+      <div class="arch">
+        <p class="label">How it runs</p>
+        <div class="arch-flow">
+          <div class="arch-node"><h3>Rules engine</h3><p>Pure Python with no I/O. Immutable state, a typed action log, and a seeded RNG, so every game can be replayed exactly.</p></div>
+          <span class="arch-arrow" aria-hidden="true">→</span>
+          <div class="arch-node"><h3>Browser (Pyodide)</h3><p>The same engine runs on each player's device. The page only shows the legal moves the engine allows.</p></div>
+          <span class="arch-arrow" aria-hidden="true">→</span>
+          <div class="arch-node"><h3>Cloudflare Worker + D1</h3><p>Stores each game's moves. Concurrent moves are ordered by log sequence, and snapshots are taken at moves that can't be undone.</p></div>
+        </div>
+      </div>
+
+      <div class="flow" id="ai">
+        <span class="tag tag-ai">AI in the workflow</span>
+        <h3>How I build with Claude Code</h3>
+        <p>Claude Code wrote most of the code. I decided what got built, set the rules it works under, and approved every merge. Click a stage to see who does what.</p>
+        <div class="steps" id="steps" role="tablist" aria-label="Build stages"></div>
+        <div class="step-panel" id="stepPanel" role="tabpanel">
+          <div class="me"><p class="label who"><i></i>Me</p><p id="stepMe"></p></div>
+          <div class="ai"><p class="label who"><i></i>Claude Code</p><p id="stepAi"></p></div>
+        </div>
+        <div class="step-nav">
+          <button type="button" id="prevStep">← Previous</button>
+          <button type="button" id="nextStep">Next →</button>
+        </div>
+
+        <div class="rules">
+          <div class="rule"><h4>The agent never answers for me</h4><p>Design questions wait for my answer. Claude can't resolve its own questions and move on.</p></div>
+          <div class="rule"><h4>Never invent a rule</h4><p>Rule code cites its section of the local rulebook. If a rule isn't written down, Claude stops and asks.</p></div>
+          <div class="rule"><h4>Screenshots or no merge</h4><p>Every UI pull request shows before and after, on phone and desktop, with the change boxed in red.</p></div>
+          <div class="rule"><h4>One ticket per session</h4><p>Each session claims one ticket, finishes it and writes down the result, which keeps changes small enough to review.</p></div>
+        </div>
+      </div>
+
+      <div class="releases" aria-label="Release history">
+        <div class="rel"><span class="v">v1.0</span> <span class="d">14 Oct</span><p>Play on one device or online with friends, against the bot or each other.</p></div>
+        <div class="rel"><span class="v">v1.1</span> <span class="d">15 Oct</span><p>Live leaderboard, Mission tracker, and a bot that builds what the colony needs.</p></div>
+        <div class="rel"><span class="v">v1.15</span> <span class="d">15 Oct</span><p>Choose each player's colour; online, everyone sees the same colours.</p></div>
+        <div class="rel"><span class="v">v1.2</span> <span class="d">15 Oct</span><p>A smarter bot that builds its Blueprints and keeps building when behind.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Other things I've built</h2>
+        <div class="filters" role="group" aria-label="Filter projects">
+          <button class="filter" type="button" data-f="all" aria-pressed="true">All</button>
+          <button class="filter" type="button" data-f="product" aria-pressed="false">AI in the product</button>
+          <button class="filter" type="button" data-f="workflow" aria-pressed="false">Built with an AI agent</button>
+        </div>
+      </div>
+      <div class="projects">
+        <article class="proj" data-ai="product workflow">
+          <div class="tags"><span class="tag tag-ai">Gemini</span><span class="tag tag-ai">Claude Code</span></div>
+          <h3>Whodunit</h3>
+          <p class="what">A murder-mystery party game for phones. The host shares one link, everyone gets a secret role and clues, and the group votes to exile a suspect each round.</p>
+          <p class="ai-note"><b>AI does:</b> Gemini writes each custom mystery from a theme, player count and role mix, then a noir recap at the end. A batch simulator tests how balanced the hand-written presets are.</p>
+          <p class="stack">FastAPI · Supabase · Gemini · Render · 289 commits</p>
+          <div class="links"><a href="https://whodunit-4zqi.onrender.com" target="_blank" rel="noopener">Live demo ↗</a><a href="https://whodunit-4zqi.onrender.com/guide" target="_blank" rel="noopener">Guide ↗</a></div>
+        </article>
+        <article class="proj" data-ai="workflow">
+          <div class="tags"><span class="tag tag-ai">Claude Code</span></div>
+          <h3>Campaign Tracker</h3>
+          <p class="what">A record-keeper for long board game campaigns like Gloomhaven or Stonesaga. Characters, custom stats, item market, skill and tech trees, map notes. Nothing is tied to one game's rules.</p>
+          <p class="ai-note"><b>AI does:</b> Claude Code builds features to a written spec, with a smoke test run before each deploy.</p>
+          <p class="stack">FastAPI · Supabase · vanilla JS · Render · 50 commits</p>
+        </article>
+        <article class="proj" data-ai="product">
+          <div class="tags"><span class="tag tag-ai">Gemini</span><span class="tag">Open source</span></div>
+          <h3>Ringgit Returns</h3>
+          <p class="what">A tax bookkeeping app for Malaysian income tax. Upload a receipt and it files the claimable items under the right LHDN relief.</p>
+          <p class="ai-note"><b>AI does:</b> Gemini reads each receipt the way a strict LHDN auditor would, drops everyday items like groceries and meals, and keeps only claimable items such as books, tech, sports and medical.</p>
+          <p class="stack">FastAPI · Supabase · Gemini · Tailwind</p>
+          <div class="links"><a href="https://github.com/raaayden/ringgit-returns" target="_blank" rel="noopener">GitHub ↗</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="career">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Career</h2>
+        <p>Click a role to see what I did there.</p>
+      </div>
+      <div class="career" id="jobs"></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head"><h2>Toolbox</h2></div>
+      <div class="skills">
+        <div><h3>Data engineering</h3><ul><li>BigQuery (GCP)</li><li>Databricks</li><li>Snowflake</li><li>Data modelling</li><li>ETL / ELT</li><li>API integration</li><li>Data governance</li></ul></div>
+        <div><h3>Business intelligence</h3><ul><li>Power BI</li><li>DAX</li><li>Power Query</li><li>Dataflows</li><li>Reporting automation</li></ul></div>
+        <div><h3>Languages</h3><ul><li>SQL (advanced)</li><li>Python</li><li>JavaScript</li><li>PHP</li><li>HTML / CSS</li><li>Java</li></ul></div>
+        <div><h3>Marketing & CRM</h3><ul><li>Marketo</li><li>Salesforce</li><li>HubSpot</li><li>Google Analytics</li><li>Tag Manager</li></ul></div>
+        <div><h3>AI-assisted building</h3><ul><li>Claude Code</li><li>Agent workflows</li><li>Gemini API</li><li>Spec-first, TDD</li><li>ADRs</li></ul></div>
+        <div><h3>Shipping</h3><ul><li>FastAPI</li><li>Supabase</li><li>Cloudflare Workers + D1</li><li>Render</li><li>Pyodide</li><li>Git</li></ul></div>
+      </div>
+      <div class="edu">
+        <p class="label">Education</p>
+        <h3>Bachelor of Computer Science (Data Science), Multimedia University Cyberjaya</h3>
+        <p>Final-year project: an image-enhancement model that improves object detection, built with convolutional neural networks in Python and TensorFlow.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Let's talk data, or board games.</h2>
+      <p>Open to data engineering and analytics engineering roles, and happy to walk through any of these builds live.</p>
+      <div class="contact-row">
+        <span class="email" id="email">radenameerh@gmail.com</span>
+        <button class="copy" id="copyBtn" type="button">Copy email</button>
+      </div>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/raden-ameer/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/raaayden" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="wrap">Built with Claude Code from my resume and repos. Kuala Lumpur, 2026.</footer>
+
+<script>
+(() => {
+  // theme toggle: cycles system → opposite of system → back
+  const root = document.documentElement;
+  const btn = document.getElementById("themeBtn");
+  const sysDark = () => matchMedia("(prefers-color-scheme: dark)").matches;
+  const isDark = () => root.dataset.theme ? root.dataset.theme === "dark" : sysDark();
+  const label = () => { btn.textContent = isDark() ? "Light" : "Dark"; };
+  try { const t = localStorage.getItem("theme"); if (t) root.dataset.theme = t; } catch (e) {}
+  label();
+  btn.addEventListener("click", () => {
+    root.dataset.theme = isDark() ? "light" : "dark";
+    try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+    label();
+  });
+
+  // query console
+  const Q = {
+    projects: {
+      sql: "SELECT name, what, ai_role\nFROM projects\nORDER BY last_commit DESC;",
+      cols: ["name", "what", "ai_role"],
+      rows: [
+        ["Marscolony", "On Mars board game in the browser", "Claude Code built it"],
+        ["Whodunit", "Murder-mystery party game", "Gemini writes the mysteries"],
+        ["Campaign Tracker", "Board game campaign records", "Claude Code built it"],
+        ["Ringgit Returns", "LHDN tax receipt keeper", "Gemini reads receipts"],
+      ], jump: "#projects",
+    },
+    ai: {
+      sql: "SELECT stage, me, claude_code\nFROM marscolony.workflow;",
+      cols: ["stage", "me", "claude_code"],
+      rows: [
+        ["grill", "answer every question", "ask, never answer"],
+        ["spec + tickets", "approve", "write vertical slices"],
+        ["build", "pick the ticket", "test first, then code"],
+        ["review", "approve the merge", "self-review, screenshots"],
+      ], jump: "#ai",
+    },
+    impact: {
+      sql: "SELECT metric, before, after\nFROM day_job.wins;",
+      cols: ["metric", "before", "after"],
+      rows: [
+        ["pipeline refresh", "5+ hours", "< 15 min"],
+        ["manual steps", "daily", "none"],
+        ["warehouses", "1", "BigQuery, Databricks, Snowflake"],
+      ], jump: "#impact",
+    },
+    career: {
+      sql: "SELECT years, role, company\nFROM career\nORDER BY start DESC;",
+      cols: ["years", "role", "company"],
+      rows: [
+        ["2025–now", "Senior Data Operation Specialist", "2X Marketing"],
+        ["2024–25", "Data Operation Specialist", "2X Marketing"],
+        ["2022–24", "Data Operation Associate", "2X Marketing"],
+        ["2021–22", "Assistant System Engineer Trainee", "TCS Malaysia"],
+        ["2020–21", "Web Developer", "ESRA Technology"],
+      ], jump: "#career",
+    },
+    skills: {
+      sql: "SELECT area, top_tools\nFROM skills;",
+      cols: ["area", "top_tools"],
+      rows: [
+        ["warehouse", "BigQuery, Databricks, Snowflake"],
+        ["bi", "Power BI, DAX, Power Query"],
+        ["code", "SQL, Python, JavaScript"],
+        ["crm", "Marketo, Salesforce, HubSpot"],
+        ["ai", "Claude Code, Gemini API"],
+      ], jump: "#skills",
+    },
+    contact: {
+      sql: "SELECT channel, handle\nFROM contact;",
+      cols: ["channel", "handle"],
+      rows: [
+        ["email", "radenameerh@gmail.com"],
+        ["linkedin", "in/raden-ameer"],
+        ["github", "raaayden"],
+      ], jump: "#contact",
+    },
+  };
+  const aliases = { project: "projects", repo: "projects", repos: "projects", build: "projects", claude: "ai", agent: "ai", workflow: "ai", work: "career", job: "career", jobs: "career", experience: "career", resume: "career", skill: "skills", tools: "skills", stack: "skills", email: "contact", hire: "contact", impact: "impact", pipeline: "impact", data: "impact" };
+  const out = document.getElementById("out");
+  const chips = document.getElementById("chips");
+  const input = document.getElementById("q");
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const hl = (sql) => esc(sql).replace(/\b(SELECT|FROM|ORDER BY|DESC|WHERE)\b/g, '<span class="k">$1</span>');
+  const resolve = (text) => {
+    const words = text.toLowerCase().match(/[a-z]+/g) || [];
+    for (const w of words) { if (Q[w]) return w; if (aliases[w]) return aliases[w]; }
+    return null;
+  };
+  const run = (key, typed) => {
+    [...chips.children].forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.k === key)));
+    if (!key) {
+      out.innerHTML = `<div class="sql">-- no table matches "${esc(typed)}"</div><div class="meta">Tables: ${Object.keys(Q).join(", ")}</div>`;
+      return;
+    }
+    const q = Q[key];
+    const t0 = performance.now();
+    const head = q.cols.map((c) => `<th>${c}</th>`).join("");
+    const body = q.rows.map((r, i) => `<tr class="row-in" style="animation-delay:${i * 60}ms">${r.map((v, j) => `<td class="${j ? "s" : ""}">${esc(v)}</td>`).join("")}</tr>`).join("");
+    const ms = (performance.now() - t0 + 3 + Math.random() * 9).toFixed(1);
+    out.innerHTML = `<div class="sql">${hl(q.sql)}</div><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table><div class="meta">${q.rows.length} rows · ${ms} ms · <a href="${q.jump}" style="color:var(--console-key)">jump to section ↓</a></div>`;
+  };
+  Object.keys(Q).forEach((k) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.dataset.k = k; b.textContent = k;
+    b.addEventListener("click", () => { input.value = ""; run(k); });
+    chips.appendChild(b);
+  });
+  document.getElementById("qform").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const v = input.value.trim(); if (!v) return;
+    run(resolve(v), v);
+  });
+  run("projects");
+
+  // refresh race: 5h vs 15m, scaled to 4 seconds
+  const raceBtn = document.getElementById("raceBtn");
+  const fb = document.getElementById("fillBefore"), fa = document.getElementById("fillAfter");
+  const tb = document.getElementById("tBefore"), ta = document.getElementById("tAfter");
+  const fmt = (m) => `${Math.floor(m / 60)}h ${String(Math.floor(m % 60)).padStart(2, "0")}m`;
+  const setRace = (p) => {
+    const before = 300 * p, after = Math.min(15, before);
+    fb.style.width = `${(before / 300) * 100}%`; fa.style.width = `${(after / 300) * 100}%`;
+    tb.textContent = fmt(before); ta.textContent = fmt(after);
+  };
+  setRace(1);
+  let raf;
+  raceBtn.addEventListener("click", () => {
+    cancelAnimationFrame(raf);
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) { setRace(1); return; }
+    const start = performance.now(), dur = 4000;
+    raceBtn.disabled = true; raceBtn.textContent = "Refreshing…";
+    const tick = (now) => {
+      const p = Math.min(1, (now - start) / dur);
+      setRace(p);
+      if (p < 1) raf = requestAnimationFrame(tick);
+      else { raceBtn.disabled = false; raceBtn.textContent = "Run again"; }
+    };
+    raf = requestAnimationFrame(tick);
+  });
+
+  // workflow stepper
+  const STEPS = [
+    ["Grill", "I answer a long run of questions about a feature until every edge case has a decision.", "Asks one question at a time and writes the shared vocabulary into <code>CONTEXT.md</code>. It never answers its own questions."],
+    ["Map", "I decide the order of the work when a feature takes more than one session.", "Charts the open decisions as GitHub issues so each session can resolve one."],
+    ["Spec + tickets", "I read the spec and approve or push back.", "Turns the decisions into a spec, then splits it into small tickets that each work end to end."],
+    ["Decide", "I approve the decisions that would be hard to undo.", "Records each one as an ADR (17 so far), such as running the rules in the browser on Cloudflare."],
+    ["Build test-first", "I pick the ticket. One per session.", "Writes a failing test first, using the rulebook's worked examples as data, then writes the code until it passes."],
+    ["Review", "I read the diff and the screenshots.", "Reviews its own change against the repo's standards and the spec, and attaches before and after screenshots for UI changes."],
+    ["Ship", "I try it locally, then give the go-ahead to merge, and decide when staging is promoted to the live site.", "Opens the PR into staging, runs the checks locally, and writes the release note players see."],
+  ];
+  const stepsEl = document.getElementById("steps");
+  const me = document.getElementById("stepMe"), ai = document.getElementById("stepAi");
+  let cur = 0;
+  const show = (i) => {
+    cur = (i + STEPS.length) % STEPS.length;
+    [...stepsEl.children].forEach((b, j) => { b.setAttribute("aria-selected", String(j === cur)); b.tabIndex = j === cur ? 0 : -1; });
+    me.textContent = STEPS[cur][1];
+    ai.innerHTML = STEPS[cur][2];
+  };
+  STEPS.forEach(([name], i) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "step"; b.role = "tab"; b.textContent = name;
+    b.addEventListener("click", () => show(i));
+    b.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { show(cur + 1); stepsEl.children[cur].focus(); }
+      if (e.key === "ArrowLeft") { show(cur - 1); stepsEl.children[cur].focus(); }
+    });
+    stepsEl.appendChild(b);
+  });
+  document.getElementById("prevStep").addEventListener("click", () => show(cur - 1));
+  document.getElementById("nextStep").addEventListener("click", () => show(cur + 1));
+  show(0);
+
+  // project filters
+  const filters = document.querySelectorAll(".filter");
+  filters.forEach((f) => f.addEventListener("click", () => {
+    filters.forEach((x) => x.setAttribute("aria-pressed", String(x === f)));
+    document.querySelectorAll(".proj").forEach((p) => {
+      p.classList.toggle("dim", f.dataset.f !== "all" && !p.dataset.ai.split(" ").includes(f.dataset.f));
+    });
+  }));
+
+  // career accordion
+  const JOBS = [
+    ["Sep 2025 – now", "Senior Data Operation Specialist", "2X Marketing", [
+      "Led multi-workspace migrations across BigQuery, Databricks and Snowflake, and redesigned the Power BI data models and governance on top.",
+      "Cut pipeline refresh from more than 5 hours to under 15 minutes by optimising SQL transformations and warehouse workloads, and automated away the manual steps.",
+      "Built reusable ETL and API pipeline frameworks across the warehouses.",
+      "Got Marketing Ops, Sales and Analysts working to the same data standards.",
+      "Lead hiring, mentor engineers, and coach a sub-team through reviews and bi-weekly check-ins.",
+    ]],
+    ["Jul 2024 – Aug 2025", "Data Operation Specialist", "2X Marketing", [
+      "Designed discovery and onboarding frameworks that cut ramp-up time across clients.",
+      "Turned analyst, marketing and sales needs into technical solutions tied to revenue goals.",
+      "Contributed to predictive lead scoring, forecasting and automation projects.",
+      "Wrote the reference documentation and scripts that new hires onboard with.",
+    ]],
+    ["Jul 2022 – Jun 2024", "Data Operation Associate", "2X Marketing", [
+      "Built marketing analytics infrastructure end to end: SQL pipelines connecting Marketo, Salesforce and HubSpot to BigQuery, and dynamic dashboards on top.",
+    ]],
+    ["May 2021 – Jul 2022", "Assistant System Engineer Trainee", "Tata Consultancy Services", [
+      "Built, patched, tested and deployed REST and SOAP APIs in Java and Maven.",
+      "Tested APIs with JUnit, Postman and SonarQube.",
+    ]],
+    ["Nov 2020 – Apr 2021", "Web Developer", "ESRA Technology", [
+      "Full-stack web work in PHP, SQL, JavaScript, HTML and CSS: testing, maintenance and troubleshooting.",
+    ]],
+  ];
+  const jobsEl = document.getElementById("jobs");
+  JOBS.forEach(([when, role, org, items], i) => {
+    const d = document.createElement("div");
+    d.className = "job"; d.dataset.open = String(i === 0);
+    const id = `job-${i}`;
+    d.innerHTML = `<button type="button" aria-expanded="${i === 0}" aria-controls="${id}"><span class="when">${when}</span><span class="role">${role}<span class="org">${org}</span></span><span class="pm" aria-hidden="true">+</span></button><ul id="${id}" ${i === 0 ? "" : "hidden"}>${items.map((t) => `<li>${t}</li>`).join("")}</ul>`;
+    const b = d.querySelector("button"), ul = d.querySelector("ul");
+    b.addEventListener("click", () => {
+      const open = d.dataset.open !== "true";
+      d.dataset.open = String(open); b.setAttribute("aria-expanded", String(open)); ul.hidden = !open;
+    });
+    jobsEl.appendChild(d);
+  });
+
+  // copy email
+  const copyBtn = document.getElementById("copyBtn");
+  copyBtn.addEventListener("click", () => {
+    const text = document.getElementById("email").textContent;
+    const done = (msg) => { copyBtn.textContent = msg; setTimeout(() => (copyBtn.textContent = "Copy email"), 1800); };
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(() => done("Copied"), () => { getSelection().selectAllChildren(document.getElementById("email")); done("Selected, press Ctrl+C"); });
+    else { getSelection().selectAllChildren(document.getElementById("email")); done("Selected, press Ctrl+C"); }
+  });
+})();
+</script>
+</body>
+</html>
