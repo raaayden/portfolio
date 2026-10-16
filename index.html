@@ -119,23 +119,7 @@ section { padding-block: 64px; }
 .sec-head h2 { font-size: var(--step-3); font-weight: 700; }
 .sec-head p { color: var(--muted); max-width: 52ch; }
 
-/* impact */
-.impact { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
-.impact > * { min-width: 0; }
-.race { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 16px; }
-.race-row { display: grid; grid-template-columns: 96px 1fr 84px; gap: 12px; align-items: center; font-size: var(--step--1); }
-.race-track { height: 14px; background: var(--bg); border-radius: 4px; overflow: hidden; }
-.race-fill { height: 100%; width: 0; border-radius: 4px; }
-.race-fill.before { background: var(--muted); }
-.race-fill.after { background: var(--accent); }
-.race-time { font-family: var(--mono); text-align: right; }
-.race-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: var(--step--1); }
 .race-btn { background: var(--accent); color: var(--bg); border: 0; border-radius: 6px; padding: 7px 14px; font-weight: 600; font-size: var(--step--1); }
-.impact-list { display: grid; gap: 18px; }
-.impact-list div { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: baseline; }
-.impact-list .big { font: 700 var(--step-2) var(--display); color: var(--accent); min-width: 4.2ch; }
-.impact-list p { color: var(--muted); }
-@media (max-width: 860px) { .impact { grid-template-columns: 1fr; } .race-row { grid-template-columns: 74px 1fr 70px; } }
 
 /* featured */
 .featured { background: var(--surface); border-block: 1px solid var(--line); }
@@ -191,11 +175,6 @@ section { padding-block: 64px; }
 .rule h4 { margin: 0 0 4px; font: 600 var(--step-0) var(--body); }
 .rule p { font-size: var(--step--1); color: var(--muted); }
 
-.releases { margin-top: 44px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
-.rel { border: 1px solid var(--line); border-radius: 10px; padding: 14px; background: var(--bg); }
-.rel .v { font: 600 var(--step-1) var(--mono); color: var(--mars); }
-.rel .d { font-size: var(--step--1); color: var(--muted); }
-.rel p { font-size: var(--step--1); margin-top: 6px; }
 
 /* projects */
 .filters { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -246,7 +225,7 @@ section { padding-block: 64px; }
 .contact .links { display: flex; gap: 22px; margin-top: 22px; flex-wrap: wrap; font-weight: 600; }
 footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
 
-/* glassCutter pipeline */
+/* image-to-video pipeline */
 .work-intro { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: start; }
 .work-intro > * { min-width: 0; }
 .work-intro h3 { font-size: var(--step-3); font-weight: 800; margin-block: 10px 12px; }
@@ -325,13 +304,13 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
     <div class="wrap">
       <div class="sec-head">
         <h2>At .Monks: GenAI and BI</h2>
-        <p>Since June 2026 I've split my time between agentic GenAI applications on Google Cloud and BI reporting for enterprise clients.</p>
+        <p>I split my time between agentic GenAI applications on Google Cloud and BI reporting for enterprise clients.</p>
       </div>
       <div class="work-intro">
         <div>
           <span class="tag tag-ai">AI in the product</span>
-          <h3>glassCutter</h3>
-          <p class="lede">An automated image-to-video pipeline I designed and built. Drop property or vehicle photos into a sheet and get vertical videos back, ready for YouTube Shorts.</p>
+          <h3>Image-to-video pipeline</h3>
+          <p class="lede">An automated pipeline I designed and built. Drop property or vehicle photos into a sheet and get vertical videos back, ready for YouTube Shorts.</p>
         </div>
         <ul class="work-points">
           <li><b>A full web app around it:</b> upload images and track each processing step, review and give verdicts on AI output, and use a prompt analytics dashboard.</li>
@@ -339,7 +318,7 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
           <li><b>Extended past properties</b> to vehicle content, and integrated with Campaign Manager.</li>
         </ul>
       </div>
-      <div class="pipe" id="pipe" role="tablist" aria-label="glassCutter pipeline stages"></div>
+      <div class="pipe" id="pipe" role="tablist" aria-label="Image-to-video pipeline stages"></div>
       <div class="pipe-detail">
         <p id="pipeText"></p>
         <button class="race-btn" id="pipeBtn" type="button">Run the pipeline</button>
@@ -368,31 +347,6 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
     </div>
   </section>
 
-  <section id="impact" style="padding-top:0">
-    <div class="wrap">
-      <div class="sec-head prev-job">
-        <h2>Before that: 2X Marketing</h2>
-        <p>Four years running the data layer behind marketing and sales analytics: warehouse migrations, ETL and API pipelines, and the dashboards on top.</p>
-      </div>
-      <div class="impact">
-        <div class="race" aria-label="Pipeline refresh time, before and after optimisation">
-          <p class="label">Daily refresh, one client workspace</p>
-          <div class="race-row"><span>Before</span><div class="race-track"><div class="race-fill before" id="fillBefore"></div></div><span class="race-time num" id="tBefore">5h 00m</span></div>
-          <div class="race-row"><span>After</span><div class="race-track"><div class="race-fill after" id="fillAfter"></div></div><span class="race-time num" id="tAfter">0h 15m</span></div>
-          <div class="race-foot">
-            <span>Optimised SQL transformations and warehouse workloads, with no manual steps left.</span>
-            <button class="race-btn" id="raceBtn" type="button">Run both refreshes</button>
-          </div>
-        </div>
-        <div class="impact-list">
-          <div><span class="big">3</span><p>cloud warehouses (BigQuery, Databricks, Snowflake) in multi-workspace migrations I led, with Power BI models redesigned on top.</p></div>
-          <div><span class="big">20×</span><p>faster refreshes after reworking SQL transformations and warehouse workloads.</p></div>
-          <div><span class="big">AI</span><p>in production analytics: predictive lead scoring, forecasting and automation projects for client revenue teams.</p></div>
-          <div><span class="big">Team</span><p>Led a sub-team, mentored engineers, ran hiring, and wrote the competency framework they grow against.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section id="marscolony" class="featured">
     <div class="wrap">
@@ -451,12 +405,6 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
         </div>
       </div>
 
-      <div class="releases" aria-label="Release history">
-        <div class="rel"><span class="v">v1.0</span> <span class="d">14 Oct</span><p>Play on one device or online with friends, against the bot or each other.</p></div>
-        <div class="rel"><span class="v">v1.1</span> <span class="d">15 Oct</span><p>Live leaderboard, Mission tracker, and a bot that builds what the colony needs.</p></div>
-        <div class="rel"><span class="v">v1.15</span> <span class="d">15 Oct</span><p>Choose each player's colour; online, everyone sees the same colours.</p></div>
-        <div class="rel"><span class="v">v1.2</span> <span class="d">15 Oct</span><p>A smarter bot that builds its Blueprints and keeps building when behind.</p></div>
-      </div>
     </div>
   </section>
 
@@ -584,7 +532,7 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
       ], jump: "#ai",
     },
     genai: {
-      sql: "SELECT stage, model_or_service\nFROM monks.glasscutter\nORDER BY step;",
+      sql: "SELECT stage, model_or_service\nFROM monks.video_pipeline\nORDER BY step;",
       cols: ["stage", "model_or_service"],
       rows: [
         ["trigger", "Google Sheets + Eventarc"],
@@ -595,23 +543,12 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
         ["publish", "YouTube Shorts"],
       ], jump: "#work",
     },
-    impact: {
-      sql: "SELECT metric, before, after\nFROM twox_marketing.wins;",
-      cols: ["metric", "before", "after"],
-      rows: [
-        ["pipeline refresh", "5+ hours", "< 15 min"],
-        ["manual steps", "daily", "none"],
-        ["warehouses", "1", "BigQuery, Databricks, Snowflake"],
-      ], jump: "#impact",
-    },
     career: {
       sql: "SELECT years, role, company\nFROM career\nORDER BY start DESC;",
       cols: ["years", "role", "company"],
       rows: [
         ["2026–now", "Senior Data Engineer", ".Monks"],
-        ["2025–26", "Senior Data Operation Specialist", "2X Marketing"],
-        ["2024–25", "Data Operation Specialist", "2X Marketing"],
-        ["2022–24", "Data Operation Associate", "2X Marketing"],
+        ["2022–26", "Data Operations, Associate to Senior", "2X Marketing"],
         ["2021–22", "Assistant System Engineer Trainee", "TCS Malaysia"],
         ["2020–21", "Web Developer", "ESRA Technology"],
       ], jump: "#career",
@@ -637,7 +574,7 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
       ], jump: "#contact",
     },
   };
-  const aliases = { glasscutter: "genai", video: "genai", veo: "genai", gemini: "genai", monks: "genai", gen: "genai", project: "projects", repo: "projects", repos: "projects", build: "projects", claude: "ai", agent: "ai", workflow: "ai", work: "career", job: "career", jobs: "career", experience: "career", resume: "career", skill: "skills", tools: "skills", stack: "skills", email: "contact", hire: "contact", impact: "impact", pipeline: "impact", data: "impact" };
+  const aliases = { video: "genai", veo: "genai", gemini: "genai", monks: "genai", gen: "genai", project: "projects", repo: "projects", repos: "projects", build: "projects", claude: "ai", agent: "ai", workflow: "ai", work: "career", job: "career", jobs: "career", experience: "career", resume: "career", skill: "skills", tools: "skills", stack: "skills", email: "contact", hire: "contact", pipeline: "genai", data: "skills" };
   const out = document.getElementById("out");
   const chips = document.getElementById("chips");
   const input = document.getElementById("q");
@@ -674,34 +611,7 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
   });
   run("projects");
 
-  // refresh race: 5h vs 15m, scaled to 4 seconds
-  const raceBtn = document.getElementById("raceBtn");
-  const fb = document.getElementById("fillBefore"), fa = document.getElementById("fillAfter");
-  const tb = document.getElementById("tBefore"), ta = document.getElementById("tAfter");
-  const fmt = (m) => `${Math.floor(m / 60)}h ${String(Math.floor(m % 60)).padStart(2, "0")}m`;
-  const setRace = (p) => {
-    const before = 300 * p, after = Math.min(15, before);
-    fb.style.width = `${(before / 300) * 100}%`; fa.style.width = `${(after / 300) * 100}%`;
-    tb.textContent = fmt(before); ta.textContent = fmt(after);
-  };
-  setRace(1);
-  let raf;
-  raceBtn.addEventListener("click", () => {
-    cancelAnimationFrame(raf);
-    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) { setRace(1); return; }
-    const start = performance.now(), dur = 4000;
-    raceBtn.disabled = true; raceBtn.textContent = "Refreshing…";
-    const tick = (now) => {
-      const p = Math.min(1, (now - start) / dur);
-      setRace(p);
-      if (p < 1) raf = requestAnimationFrame(tick);
-      else { raceBtn.disabled = false; raceBtn.textContent = "Run again"; }
-    };
-    raf = requestAnimationFrame(tick);
-  });
-
-  // glassCutter pipeline
+  // image-to-video pipeline
   const PIPE = [
     ["Trigger", "Sheets + Eventarc", "A new row in Google Sheets fires an Eventarc trigger, which starts a run for that image.", "Google Sheets · Eventarc"],
     ["Outpaint", "Nanobanana", "Nanobanana extends the photo out to a 9:16 vertical frame, so nothing important gets cropped.", "Nanobanana"],
@@ -784,27 +694,19 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
   // career accordion
   const JOBS = [
     ["Jun 2026 – now", "Senior Data Engineer", ".Monks", [
-      "Designed and built glassCutter, an image-to-video pipeline: Sheets and Eventarc triggers, Nanobanana outpainting to 9:16, Gemini scene and depth analysis, and Veo video. Containerized with Docker and deployed on Cloud Run.",
+      "Designed and built an automated image-to-video pipeline: Sheets and Eventarc triggers, Nanobanana outpainting to 9:16, Gemini scene and depth analysis, and Veo video. Containerized with Docker and deployed on Cloud Run.",
       "Built the web app around it: upload and step tracking, AI output review, a prompt analytics dashboard, post-production tools, and direct publishing to YouTube Shorts.",
-      "Extended glassCutter to vehicle content, integrated it with Campaign Manager, and added Omni as a second video model alongside Veo.",
+      "Extended the pipeline to vehicle content, integrated it with Campaign Manager, and added Omni as a second video model alongside Veo.",
       "Brought Claude Skills agentic workflows into Real-Time Radar, an internal intelligence platform, and contributed to its core framework and scoring.",
       "Delivered Power BI, Looker and BigQuery reporting for several enterprise clients, from wireframe and data model to client handover.",
     ]],
-    ["Sep 2025 – May 2026", "Senior Data Operation Specialist", "2X Marketing", [
+    ["Jul 2022 – May 2026", "Data Operations: Associate → Specialist → Senior Specialist", "2X Marketing", [
       "Led multi-workspace migrations across BigQuery, Databricks and Snowflake, and redesigned the Power BI data models and governance on top.",
       "Cut pipeline refresh from more than 5 hours to under 15 minutes by optimising SQL transformations and warehouse workloads, and automated away the manual steps.",
-      "Built reusable ETL and API pipeline frameworks across the warehouses.",
-      "Got Marketing Ops, Sales and Analysts working to the same data standards.",
-      "Lead hiring, mentor engineers, and coach a sub-team through reviews and bi-weekly check-ins.",
-    ]],
-    ["Jul 2024 – Aug 2025", "Data Operation Specialist", "2X Marketing", [
-      "Designed discovery and onboarding frameworks that cut ramp-up time across clients.",
-      "Turned analyst, marketing and sales needs into technical solutions tied to revenue goals.",
+      "Built marketing analytics infrastructure end to end: SQL, ETL and API pipelines connecting Marketo, Salesforce and HubSpot to BigQuery, with dashboards on top.",
       "Contributed to predictive lead scoring, forecasting and automation projects.",
-      "Wrote the reference documentation and scripts that new hires onboard with.",
-    ]],
-    ["Jul 2022 – Jun 2024", "Data Operation Associate", "2X Marketing", [
-      "Built marketing analytics infrastructure end to end: SQL pipelines connecting Marketo, Salesforce and HubSpot to BigQuery, and dynamic dashboards on top.",
+      "Designed discovery and onboarding frameworks that cut ramp-up time across clients, and got Marketing Ops, Sales and Analysts working to the same data standards.",
+      "Led hiring, mentored engineers, and coached a sub-team through reviews and bi-weekly check-ins.",
     ]],
     ["May 2021 – Jul 2022", "Assistant System Engineer Trainee", "Tata Consultancy Services", [
       "Built, patched, tested and deployed REST and SOAP APIs in Java and Maven.",
