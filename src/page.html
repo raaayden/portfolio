@@ -303,7 +303,7 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
         <div>
           <span class="tag tag-ai">AI in the product</span>
           <h3>Image-to-video pipeline</h3>
-          <p class="lede">An automated pipeline I designed and built. Drop property or vehicle photos into a sheet and get vertical videos back, ready for YouTube Shorts.</p>
+          <p class="lede">An automated pipeline I designed and built. Upload property or vehicle photos in the web app and get vertical videos back, ready for YouTube Shorts.</p>
         </div>
         <ul class="work-points">
           <li><b>A full web app around it:</b> upload images and track each processing step, review and give verdicts on AI output, and use a prompt analytics dashboard.</li>
@@ -454,7 +454,7 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
       <div class="sec-head"><h2>Toolbox</h2></div>
       <div class="skills">
         <div><h3>Generative AI</h3><ul><li>Gemini</li><li>Veo</li><li>Omni</li><li>Nanobanana</li><li>Claude Skills</li><li>Claude Code</li><li>Agentic workflows</li></ul></div>
-        <div><h3>Google Cloud</h3><ul><li>Cloud Run</li><li>Eventarc</li><li>Docker</li><li>BigQuery</li><li>Apps Script</li></ul></div>
+        <div><h3>Google Cloud</h3><ul><li>Cloud Run</li><li>Docker</li><li>BigQuery</li><li>Apps Script</li></ul></div>
         <div><h3>Data engineering</h3><ul><li>Databricks</li><li>Snowflake</li><li>Data modelling</li><li>ETL / ELT</li><li>API integration</li><li>Data governance</li></ul></div>
         <div><h3>Business intelligence</h3><ul><li>Power BI</li><li>DAX</li><li>Power Query</li><li>Looker</li><li>LookML</li><li>Reporting automation</li></ul></div>
         <div><h3>Languages</h3><ul><li>SQL (advanced)</li><li>Python</li><li>JavaScript</li><li>PHP</li><li>HTML / CSS</li><li>Java</li></ul></div>
@@ -528,7 +528,7 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
       sql: "SELECT stage, model_or_service\nFROM monks.video_pipeline\nORDER BY step;",
       cols: ["stage", "model_or_service"],
       rows: [
-        ["trigger", "Google Sheets + Eventarc"],
+        ["upload", "Web app"],
         ["outpaint 9:16", "Nanobanana"],
         ["scene + depth", "Gemini"],
         ["video", "Veo or Omni"],
@@ -551,7 +551,7 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
       cols: ["area", "top_tools"],
       rows: [
         ["genai", "Gemini, Veo, Claude Skills"],
-        ["cloud", "Cloud Run, Eventarc, Docker"],
+        ["cloud", "Cloud Run, Docker, BigQuery"],
         ["warehouse", "BigQuery, Databricks, Snowflake"],
         ["bi", "Power BI, Looker, DAX"],
         ["code", "SQL, Python, JavaScript"],
@@ -606,7 +606,7 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
 
   // image-to-video pipeline
   const PIPE = [
-    ["Trigger", "Sheets + Eventarc", "A new row in Google Sheets fires an Eventarc trigger, which starts a run for that image.", "Google Sheets · Eventarc"],
+    ["Upload", "Web app", "Everything starts in the web app: upload the images, start the run, and follow each stage as it happens.", "Web app · Cloud Run"],
     ["Outpaint", "Nanobanana", "Nanobanana extends the photo out to a 9:16 vertical frame, so nothing important gets cropped.", "Nanobanana"],
     ["Analyze", "Gemini", "Gemini reads the scene and its depth, and writes the direction the video model follows.", "Gemini"],
     ["Generate", "Veo / Omni", "Veo generates the video. Omni is available as an alternative, so a single vendor never blocks the pipeline.", "Veo · Omni · Docker on Cloud Run"],
@@ -687,7 +687,7 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
   // career accordion
   const JOBS = [
     ["Jun 2026 – now", "Senior Data Engineer", ".Monks", [
-      "Designed and built an automated image-to-video pipeline: Sheets and Eventarc triggers, Nanobanana outpainting to 9:16, Gemini scene and depth analysis, and Veo video. Containerized with Docker and deployed on Cloud Run.",
+      "Designed and built an automated image-to-video pipeline run entirely from its own web app: Nanobanana outpainting to 9:16, Gemini scene and depth analysis, and Veo video. Containerized with Docker and deployed on Cloud Run.",
       "Built the web app around it: upload and step tracking, AI output review, a prompt analytics dashboard, post-production tools, and direct publishing to YouTube Shorts.",
       "Extended the pipeline to vehicle content, integrated it with Campaign Manager, and added Omni as a second video model alongside Veo.",
       "Brought Claude Skills agentic workflows into Real-Time Radar, an internal intelligence platform, and contributed to its core framework and scoring.",
