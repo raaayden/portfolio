@@ -11,19 +11,19 @@
 <style>
 /* Layout: one 1080px column; a query console opens the page, the featured build sits in a full-bleed band, everything else in a quiet ledger rhythm. */
 :root {
-  --bg: #eef1f3;
+  --bg: #f0f4ee;
   --surface: #ffffff;
-  --ink: #142029;
-  --muted: #56636d;
-  --line: #d3dae0;
-  --accent: #0b6e69;
-  --accent-soft: #d6ece9;
+  --ink: #18241a;
+  --muted: #56665a;
+  --line: #d2ddd0;
+  --accent: #2e7d32;
+  --accent-soft: #dcefdc;
   --mars: #b4472a;
   --mars-soft: #f6e1d9;
-  --console: #0f1a21;
+  --console: #0f1a12;
   --console-ink: #d8e4e8;
   --console-dim: #7c9099;
-  --console-key: #6fd3c6;
+  --console-key: #8fdc9c;
   --console-str: #f0a37f;
   --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
@@ -37,16 +37,16 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0d1418; --surface: #152027; --ink: #e3eaee; --muted: #93a3ad; --line: #26343d;
-    --accent: #4cc3b6; --accent-soft: #143633; --mars: #ec8a68; --mars-soft: #3a2119;
-    --console: #070d10; --console-ink: #d8e4e8; --console-dim: #6f838c; --console-key: #6fd3c6; --console-str: #f0a37f;
+    --bg: #0e1610; --surface: #162219; --ink: #e2ece3; --muted: #93a796; --line: #24352a;
+    --accent: #6fcf7a; --accent-soft: #183a1f; --mars: #ec8a68; --mars-soft: #3a2119;
+    --console: #08100a; --console-ink: #d8e4e8; --console-dim: #6f838c; --console-key: #8fdc9c; --console-str: #f0a37f;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0d1418; --surface: #152027; --ink: #e3eaee; --muted: #93a3ad; --line: #26343d;
-  --accent: #4cc3b6; --accent-soft: #143633; --mars: #ec8a68; --mars-soft: #3a2119;
-  --console: #070d10; --console-ink: #d8e4e8; --console-dim: #6f838c; --console-key: #6fd3c6; --console-str: #f0a37f;
+  --bg: #0e1610; --surface: #162219; --ink: #e2ece3; --muted: #93a796; --line: #24352a;
+  --accent: #6fcf7a; --accent-soft: #183a1f; --mars: #ec8a68; --mars-soft: #3a2119;
+  --console: #08100a; --console-ink: #d8e4e8; --console-dim: #6f838c; --console-key: #8fdc9c; --console-str: #f0a37f;
   color-scheme: dark;
 }
 
@@ -225,6 +225,78 @@ section { padding-block: 64px; }
 .contact .links { display: flex; gap: 22px; margin-top: 22px; flex-wrap: wrap; font-weight: 600; }
 footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
 
+/* who dropped the table */
+:root { --ok: #1f7a3d; --ok-soft: #dcefe2; --bad: #b3261e; --bad-soft: #f8dedb; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --ok: #6fcf8e; --ok-soft: #173524; --bad: #f08a80; --bad-soft: #3d1c19; } }
+:root[data-theme="dark"] { --ok: #6fcf8e; --ok-soft: #173524; --bad: #f08a80; --bad-soft: #3d1c19; }
+.case-brief { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline; background: var(--bad-soft); border: 1px solid color-mix(in srgb, var(--bad) 30%, transparent); border-radius: 12px; padding: 14px 18px; margin-bottom: 16px; }
+.case-brief .label { color: var(--bad); }
+.case-brief p:last-child { flex: 1 1 320px; min-width: 0; }
+.case-brief code { font: 600 0.9em var(--mono); color: var(--bad); }
+.case-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 16px; align-items: start; }
+.case-grid > * { min-width: 0; }
+.suspects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.sus { position: relative; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px; display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; align-items: center; transition: opacity .3s, transform .2s, border-color .2s; }
+.sus:hover { border-color: var(--muted); }
+.sus .av { grid-row: span 2; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font: 700 0.8rem var(--display); }
+.sus .nm { font: 700 var(--step-0) var(--display); }
+.sus .at { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.sus .at span { font: 400 0.7rem var(--mono); background: var(--bg); border-radius: 4px; padding: 2px 6px; color: var(--muted); }
+.sus .at span b { color: var(--ink); font-weight: 600; }
+.sus[aria-pressed="true"] { border-color: var(--bad); box-shadow: 0 0 0 2px var(--bad); }
+.sus.out { opacity: 0.35; }
+.sus.out .nm { text-decoration: line-through; }
+.sus.out::after { content: "RULED OUT"; position: absolute; top: 10px; right: 10px; font: 600 0.6rem var(--mono); letter-spacing: 0.08em; color: var(--muted); }
+.sus.guilty { opacity: 1; border-color: var(--ok); box-shadow: 0 0 0 2px var(--ok); background: var(--ok-soft); }
+.sus.guilty::after { content: "GUILTY"; color: var(--ok); position: absolute; top: 10px; right: 10px; font: 600 0.6rem var(--mono); letter-spacing: 0.08em; }
+.sus.flash { animation: flashOut .5s; }
+@keyframes flashOut { 30% { transform: scale(0.97); border-color: var(--bad); } }
+.case-console .qb { padding: 14px; display: grid; gap: 8px; line-height: 2; }
+.case-console .qb .k { color: var(--console-key); }
+.case-console select { background: rgba(255,255,255,0.07); color: var(--console-str); border: 1px solid rgba(255,255,255,0.16); border-radius: 5px; font: 400 0.8rem var(--mono); padding: 2px 4px; max-width: 100%; }
+.case-console select option { color: #142029; background: #ffffff; }
+.qb-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.qrun { background: var(--console-key); color: var(--console); border: 0; border-radius: 6px; padding: 7px 14px; font: 600 0.8rem var(--mono); }
+.qlog { border-top: 1px solid rgba(255,255,255,0.08); padding: 10px 14px; min-height: 120px; max-height: 230px; overflow: auto; display: grid; gap: 8px; align-content: start; font-size: 0.76rem; }
+.qlog .e { white-space: pre-wrap; }
+.qlog .e .r { color: var(--console-key); }
+.qlog .e .z { color: var(--console-str); }
+.qlog .e .d { color: var(--console-dim); }
+.qlog .win { color: var(--console-key); font-weight: 600; }
+.qlog .miss { color: var(--console-str); }
+.case-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 12px 14px; border-top: 1px solid rgba(255,255,255,0.08); color: var(--console-dim); font-size: 0.76rem; }
+.case-foot b { color: var(--console-ink); font-size: 0.9rem; }
+.case-foot .sp { margin-left: auto; display: flex; gap: 8px; }
+.accuse { background: #e0705a; color: #fff; border: 0; border-radius: 6px; padding: 7px 12px; font: 600 0.78rem var(--body); }
+.accuse:disabled { opacity: 0.4; cursor: not-allowed; }
+.newcase { background: none; border: 1px solid rgba(255,255,255,0.2); color: var(--console-ink); border-radius: 6px; padding: 6px 12px; font: 500 0.78rem var(--body); }
+@media (max-width: 900px) { .case-grid { grid-template-columns: 1fr; } }
+@media (max-width: 420px) { .suspects { grid-template-columns: 1fr; } }
+
+/* game section: a softer board-game look in kaya and pandan */
+#play {
+  --gbg: #e9e7d4; --gcard: #fbfaf2; --gline: #31453a; --gshadow: rgba(49, 69, 58, 0.85); --gtext: #3a4636;
+  background: var(--gbg); border-block: 1px solid var(--line);
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) #play { --gbg: #18211a; --gcard: #1f2b22; --gline: #5d7a63; --gshadow: rgba(0, 0, 0, 0.55); --gtext: #b9c7ba; } }
+:root[data-theme="dark"] #play { --gbg: #18211a; --gcard: #1f2b22; --gline: #5d7a63; --gshadow: rgba(0, 0, 0, 0.55); --gtext: #b9c7ba; }
+#play .sec-head h2 { font-size: var(--step-4); font-weight: 800; }
+#play .sec-head p { color: var(--gtext); }
+#play .case-brief { background: var(--gcard); border: 1.5px solid var(--gline); box-shadow: 3px 3px 0 var(--gshadow); }
+#play .sus { background: var(--gcard); border: 1.5px solid var(--gline); box-shadow: 3px 3px 0 var(--gshadow); transition: transform .15s, box-shadow .15s, opacity .3s; }
+#play .sus:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--gshadow); }
+#play .sus[aria-pressed="true"] { border-color: var(--bad); box-shadow: 3px 3px 0 var(--bad); }
+#play .sus.out { box-shadow: none; transform: none; border-style: dashed; }
+#play .sus.guilty { border-color: var(--ok); box-shadow: 3px 3px 0 var(--ok); background: var(--ok-soft); }
+#play .sus .av { background: var(--accent); color: var(--surface); }
+#play .sus .at span { color: var(--ink); background: color-mix(in srgb, var(--chip, var(--muted)) 32%, var(--gcard)); }
+#play .sus .at span b { color: inherit; }
+#play .at .v-data { --chip: #5aa9d6; } #play .at .v-marketing-ops { --chip: #d7839f; } #play .at .v-sales { --chip: #6fb886; } #play .at .v-finance { --chip: #a98bd6; }
+#play .at .v-kl { --chip: #d99a52; } #play .at .v-penang { --chip: #4fb3b6; } #play .at .v-remote { --chip: #9aa39b; }
+#play .at .v-day { --chip: #d8bf4a; } #play .at .v-night { --chip: #4b5596; }
+#play .at .v-kopi { --chip: #8b5a3c; } #play .at .v-teh-tarik { --chip: #c9935e; } #play .at .v-latte { --chip: #c2a888; } #play .at .v-milo { --chip: #4f7f3c; }
+#play .case-console { box-shadow: 4px 4px 0 var(--gshadow); }
+
 /* image-to-video pipeline */
 .work-intro { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: start; }
 .work-intro > * { min-width: 0; }
@@ -264,6 +336,7 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
       <a href="#work">GenAI &amp; BI work</a>
       <a href="#marscolony">Marscolony</a>
       <a href="#projects">Projects</a>
+      <a href="#play">Play</a>
       <a href="#career">Career</a>
       <a href="#contact">Contact</a>
     </div>
@@ -442,6 +515,51 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
           <p class="stack">FastAPI · Supabase · Gemini · Tailwind</p>
           <div class="links"><a href="https://github.com/raaayden/ringgit-returns" target="_blank" rel="noopener">GitHub ↗</a></div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="play">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Who Dropped the Table?</h2>
+        <p>A SQL deduction game. The audit log caught one row with the user's name blacked out. Query it to rule out suspects, then accuse the culprit in as few queries as you can.</p>
+      </div>
+      <div class="case-brief">
+        <p class="label">Incident <span id="cNo" class="num"></span></p>
+        <p id="cStory"></p>
+      </div>
+      <div class="case-grid">
+        <div class="suspects" id="suspects" role="group" aria-label="Suspects. Select one to accuse."></div>
+        <div class="console case-console" aria-label="Audit log query console">
+          <div class="console-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span>audit_log · 1 row · user = ████</span></div>
+          <div class="qb">
+            <div>
+              <span class="k">SELECT</span> COUNT(*) <span class="k">FROM</span> audit_log<br>
+              <span class="k">WHERE</span>
+              <select id="c1" aria-label="First column"></select>
+              <select id="o1" aria-label="First operator"><option>=</option><option>!=</option></select>
+              <select id="v1" aria-label="First value"></select>
+              <select id="jn" aria-label="Add a second condition"><option value="">;</option><option value="AND">AND</option><option value="OR">OR</option></select>
+              <span id="cond2" hidden>
+                <select id="c2" aria-label="Second column"></select>
+                <select id="o2" aria-label="Second operator"><option>=</option><option>!=</option></select>
+                <select id="v2" aria-label="Second value"></select>;
+              </span>
+            </div>
+            <div class="qb-actions"><button class="qrun" id="qRun" type="button">▶ Run query</button></div>
+          </div>
+          <div class="qlog" id="qlog" aria-live="polite"></div>
+          <div class="case-foot">
+            <span>Queries <b class="num" id="qCount">0</b></span>
+            <span>Par <b>3</b></span>
+            <span>Your best <b class="num" id="qBest">–</b></span>
+            <span class="sp">
+              <button class="accuse" id="accuseBtn" type="button" disabled>Pick a suspect</button>
+              <button class="newcase" id="newCase" type="button">New case</button>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -729,6 +847,135 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
     });
     jobsEl.appendChild(d);
   });
+
+  // who dropped the table
+  const COLS = {
+    team: ["Data", "Marketing Ops", "Sales", "Finance"],
+    office: ["KL", "Penang", "Remote"],
+    shift: ["day", "night"],
+    drink: ["kopi", "teh tarik", "latte", "milo"],
+  };
+  const PEOPLE = ["Aisyah", "Daniel", "Mei Ling", "Arjun", "Farah", "Kevin", "Nurul", "Hafiz", "Siti", "Jason", "Priya", "Amir", "Wei Jie", "Sofia", "Irfan", "Kavitha"];
+  const STORIES = [
+    "At 02:14 someone ran <code>DROP TABLE leads</code> on production. Every revenue dashboard is now blank.",
+    "Someone ran <code>DELETE FROM campaigns</code> with no <code>WHERE</code> clause. Marketing has noticed.",
+    "Someone renamed <code>revenue_usd</code> to <code>rev</code> in BigQuery and broke 14 dashboards before standup.",
+    "Someone pushed a DAX measure that counts every deal twice. The CFO already shared the slide.",
+    "Someone set the nightly refresh to run every minute. The BigQuery bill is climbing.",
+  ];
+  const CONFESS = [
+    "\"I thought it was the staging table.\"",
+    "\"I was going to add the WHERE clause after my kopi.\"",
+    "\"The column name was too long. I had to.\"",
+    "\"It looked right in the preview.\"",
+    "\"I tested it on my machine.\"",
+  ];
+  const $ = (id) => document.getElementById(id);
+  const susEl = $("suspects"), qlog = $("qlog"), qCount = $("qCount"), qBest = $("qBest"), accuseBtn = $("accuseBtn");
+  const sel = { c1: $("c1"), o1: $("o1"), v1: $("v1"), jn: $("jn"), c2: $("c2"), o2: $("o2"), v2: $("v2") };
+  let C = null, caseNo = 4100 + Math.floor(Math.random() * 800);
+  let qbest = 0;
+  try { qbest = Number(localStorage.getItem("dropBest")) || 0; } catch (e) {}
+  qBest.textContent = qbest || "–";
+
+  const fillCols = (s) => { s.innerHTML = Object.keys(COLS).map((c) => `<option>${c}</option>`).join(""); };
+  const fillVals = (colSel, valSel) => { valSel.innerHTML = COLS[colSel.value].map((v) => `<option value="${v}">'${v}'</option>`).join(""); };
+  fillCols(sel.c1); fillCols(sel.c2); sel.c2.value = "office";
+  fillVals(sel.c1, sel.v1); fillVals(sel.c2, sel.v2);
+  sel.c1.addEventListener("change", () => fillVals(sel.c1, sel.v1));
+  sel.c2.addEventListener("change", () => fillVals(sel.c2, sel.v2));
+  sel.jn.addEventListener("change", () => { $("cond2").hidden = !sel.jn.value; });
+
+  const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const one = (a) => a[Math.floor(Math.random() * a.length)];
+  const test = (s, q) => {
+    const m = (c, o, v) => (o === "=" ? s[c] === v : s[c] !== v);
+    const a = m(q.c1, q.o1, q.v1);
+    if (!q.jn) return a;
+    const b = m(q.c2, q.o2, q.v2);
+    return q.jn === "AND" ? a && b : a || b;
+  };
+  const sqlText = (q) => {
+    let w = `${q.c1} ${q.o1} '${q.v1}'`;
+    if (q.jn) w += ` ${q.jn} ${q.c2} ${q.o2} '${q.v2}'`;
+    return w;
+  };
+  const log = (html) => { qlog.insertAdjacentHTML("beforeend", html); qlog.scrollTop = qlog.scrollHeight; };
+
+  const renderSuspects = () => {
+    susEl.innerHTML = C.sus.map((s, i) => `<button type="button" class="sus" data-i="${i}" aria-pressed="false"><span class="av">${s.name.split(" ").map((w) => w[0]).join("")}</span><span class="nm">${s.name}</span><span class="at">${Object.keys(COLS).map((c) => `<span class="v-${s[c].toLowerCase().replace(/ /g, "-")}">${c} <b>${s[c]}</b></span>`).join("")}</span></button>`).join("");
+  };
+  const updateAccuse = () => {
+    const s = C.pick != null ? C.sus[C.pick] : null;
+    accuseBtn.disabled = !s || C.done;
+    accuseBtn.textContent = C.done ? "Case closed" : s ? `Accuse ${s.name}` : "Pick a suspect";
+  };
+  const newCase = () => {
+    const names = shuffle(PEOPLE.slice()).slice(0, 8), seen = new Set(), sus = [];
+    while (sus.length < 8) {
+      const s = { name: names[sus.length] };
+      Object.keys(COLS).forEach((c) => (s[c] = one(COLS[c])));
+      const key = Object.keys(COLS).map((c) => s[c]).join("|");
+      if (seen.has(key)) continue;
+      seen.add(key); sus.push(s);
+    }
+    C = { sus, culprit: Math.floor(Math.random() * 8), out: new Set(), queries: 0, pick: null, done: false, story: Math.floor(Math.random() * STORIES.length) };
+    $("cNo").textContent = `#${++caseNo}`;
+    $("cStory").innerHTML = STORIES[C.story];
+    renderSuspects();
+    qCount.textContent = "0";
+    qlog.innerHTML = '<div class="e"><span class="d">-- The log row has the culprit\'s team, office, shift and drink. COUNT(*) returns 1 if your WHERE matches it, 0 if not.</span></div>';
+    updateAccuse();
+  };
+
+  $("qRun").addEventListener("click", () => {
+    if (C.done) return;
+    const q = { c1: sel.c1.value, o1: sel.o1.value, v1: sel.v1.value, jn: sel.jn.value, c2: sel.c2.value, o2: sel.o2.value, v2: sel.v2.value };
+    const hit = test(C.sus[C.culprit], q);
+    C.queries++; qCount.textContent = C.queries;
+    const struck = [];
+    C.sus.forEach((s, i) => {
+      if (C.out.has(i) || test(s, q) === hit) return;
+      C.out.add(i); struck.push(s.name);
+      const el = susEl.children[i]; el.classList.add("out", "flash");
+    });
+    const left = C.sus.length - C.out.size;
+    const note = struck.length ? `ruled out ${struck.join(", ")}` : "nobody new ruled out";
+    log(`<div class="e"><span class="d">${C.queries}.</span> WHERE ${esc(sqlText(q))}\n   <span class="${hit ? "r" : "z"}">→ ${hit ? 1 : 0}</span> <span class="d">· ${note} · ${left} left</span></div>`);
+    if (left === 1) log('<div class="e win">One suspect left. Select them and accuse.</div>');
+  });
+
+  susEl.addEventListener("click", (e) => {
+    const b = e.target.closest(".sus"); if (!b || C.done) return;
+    const i = Number(b.dataset.i);
+    C.pick = C.pick === i ? null : i;
+    [...susEl.children].forEach((x, j) => x.setAttribute("aria-pressed", String(j === C.pick)));
+    updateAccuse();
+  });
+
+  accuseBtn.addEventListener("click", () => {
+    if (C.pick == null || C.done) return;
+    const s = C.sus[C.pick], el = susEl.children[C.pick];
+    if (C.pick === C.culprit) {
+      C.done = true;
+      el.classList.remove("out"); el.classList.add("guilty"); el.setAttribute("aria-pressed", "false");
+      const n = C.queries;
+      const rank = n <= 3 ? "Senior Data Engineer" : n === 4 ? "Data Engineer" : n <= 6 ? "Analyst" : "Intern (we all start somewhere)";
+      log(`<div class="e win">Case closed in ${n} quer${n === 1 ? "y" : "ies"}. ${esc(s.name)}: ${esc(CONFESS[C.story])}\nRank: ${rank}.</div>`);
+      if (!qbest || n < qbest) {
+        qbest = n; qBest.textContent = n; log('<div class="e win">New best.</div>');
+        try { localStorage.setItem("dropBest", String(n)); } catch (e) {}
+      }
+    } else {
+      C.queries++; qCount.textContent = C.queries;
+      C.out.add(C.pick); el.classList.add("out", "flash"); el.setAttribute("aria-pressed", "false");
+      log(`<div class="e miss">${esc(s.name)} has an alibi. That accusation cost you a query.</div>`);
+      C.pick = null;
+    }
+    updateAccuse();
+  });
+  $("newCase").addEventListener("click", newCase);
+  newCase();
 
   // copy email
   const copyBtn = document.getElementById("copyBtn");
