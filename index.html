@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Raden Ameer Hanafi</title>
-<meta name="description" content="Raden Ameer Hanafi: senior data operations specialist in Kuala Lumpur who builds data pipelines at work and software with AI agents on the side.">
+<meta name="description" content="Raden Ameer Hanafi: data and AI engineer in Kuala Lumpur building BI for enterprise clients and agentic GenAI apps on Google Cloud.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
@@ -245,6 +245,35 @@ section { padding-block: 64px; }
 .contact a { color: var(--bg); }
 .contact .links { display: flex; gap: 22px; margin-top: 22px; flex-wrap: wrap; font-weight: 600; }
 footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
+
+/* glassCutter pipeline */
+.work-intro { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: start; }
+.work-intro > * { min-width: 0; }
+.work-intro h3 { font-size: var(--step-3); font-weight: 800; margin-block: 10px 12px; }
+.work-intro .lede { font-size: var(--step-1); color: var(--muted); line-height: 1.5; max-width: 46ch; }
+.pipe { display: flex; flex-wrap: wrap; gap: 0; margin-top: 26px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--line); }
+.pipe-stage { flex: 1 1 120px; background: var(--surface); border: 0; border-right: 1px solid var(--line); padding: 14px 12px; text-align: left; display: grid; gap: 4px; position: relative; }
+.pipe-stage:last-child { border-right: 0; }
+.pipe-stage .n { font: 600 0.7rem var(--mono); color: var(--muted); }
+.pipe-stage .t { font: 700 var(--step-0) var(--display); }
+.pipe-stage .s { font: 400 0.72rem var(--mono); color: var(--muted); }
+.pipe-stage[aria-selected="true"] { background: var(--ink); color: var(--bg); }
+.pipe-stage[aria-selected="true"] .n, .pipe-stage[aria-selected="true"] .s { color: var(--accent); }
+.pipe-stage::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--accent); transform: scaleX(0); transform-origin: left; }
+.pipe.playing .pipe-stage[aria-selected="true"]::after { animation: fillbar 1.6s linear both; }
+@keyframes fillbar { to { transform: scaleX(1); } }
+.pipe-detail { margin-top: 14px; display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+.pipe-detail p { min-width: 0; }
+.pipe-detail .tools { display: block; font: 400 var(--step--1) var(--mono); color: var(--accent); margin-top: 6px; }
+.work-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 48px; }
+.work-cols > div { min-width: 0; }
+.work-cols h4 { margin: 0 0 12px; font: 700 var(--step-1) var(--display); }
+.work-cols ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; color: var(--muted); }
+.work-cols ul b { color: var(--ink); font-weight: 600; }
+.work-points { margin: 0; padding-left: 18px; display: grid; gap: 8px; color: var(--muted); }
+.work-points b { color: var(--ink); font-weight: 600; }
+.prev-job { margin-top: 0; padding-top: 28px; border-top: 1px solid var(--line); }
+@media (max-width: 860px) { .work-intro, .work-cols { grid-template-columns: 1fr; } .pipe-stage { flex-basis: 45%; border-bottom: 1px solid var(--line); } .pipe-detail { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -253,7 +282,7 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
   <div class="wrap">
     <a class="brand" href="#top">Raden Ameer</a>
     <div class="nav-links">
-      <a href="#impact">Data work</a>
+      <a href="#work">GenAI &amp; BI work</a>
       <a href="#marscolony">Marscolony</a>
       <a href="#projects">Projects</a>
       <a href="#career">Career</a>
@@ -266,16 +295,17 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
 <main id="top">
   <header class="wrap hero">
     <div>
-      <p class="label">Senior Data Operation Specialist · Kuala Lumpur</p>
-      <h1>I build data pipelines at work, and <span>software with AI agents</span> after hours.</h1>
-      <p class="lede">Four years of SQL, BigQuery and Power BI for marketing and revenue teams. On the side I ship full apps by directing Claude Code through a spec-first, test-first workflow.</p>
+      <p class="label">Senior Data Engineer at .Monks · Kuala Lumpur</p>
+      <h1>Data and AI engineer. I build <span>BI for enterprise clients</span> and agentic GenAI apps on Google Cloud.</h1>
+      <p class="lede">Power BI, Looker and BigQuery reporting for clients, and image-to-video pipelines on Gemini, Veo and Cloud Run. On the side I ship full apps with Claude Code.</p>
       <div class="facts">
+        <span><b>Gemini · Veo · Cloud Run</b></span>
+        <span><b>Power BI · Looker · BigQuery</b></span>
         <span><b>5+ h → &lt;15 min</b> pipeline refresh</span>
-        <span><b>BigQuery · Databricks · Snowflake</b></span>
         <span><b>B.CS Data Science</b>, MMU</span>
       </div>
       <div class="cta">
-        <a class="btn btn-solid" href="#marscolony">See the featured build</a>
+        <a class="btn btn-solid" href="#work">See my work</a>
         <a class="btn btn-ghost" href="#contact">Get in touch</a>
       </div>
     </div>
@@ -291,11 +321,58 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
     </div>
   </header>
 
-  <section id="impact">
+  <section id="work">
     <div class="wrap">
       <div class="sec-head">
-        <h2>The day job: data that arrives on time</h2>
-        <p>At 2X Marketing I run the data layer behind marketing and sales analytics: warehouse migrations, ETL and API pipelines, and the dashboards on top.</p>
+        <h2>At .Monks: GenAI and BI</h2>
+        <p>Since June 2026 I've split my time between agentic GenAI applications on Google Cloud and BI reporting for enterprise clients.</p>
+      </div>
+      <div class="work-intro">
+        <div>
+          <span class="tag tag-ai">AI in the product</span>
+          <h3>glassCutter</h3>
+          <p class="lede">An automated image-to-video pipeline I designed and built. Drop property or vehicle photos into a sheet and get vertical videos back, ready for YouTube Shorts.</p>
+        </div>
+        <ul class="work-points">
+          <li><b>A full web app around it:</b> upload images and track each processing step, review and give verdicts on AI output, and use a prompt analytics dashboard.</li>
+          <li><b>Two video models:</b> Omni added as an alternative to Veo, so the pipeline doesn't depend on one vendor.</li>
+          <li><b>Extended past properties</b> to vehicle content, and integrated with Campaign Manager.</li>
+        </ul>
+      </div>
+      <div class="pipe" id="pipe" role="tablist" aria-label="glassCutter pipeline stages"></div>
+      <div class="pipe-detail">
+        <p id="pipeText"></p>
+        <button class="race-btn" id="pipeBtn" type="button">Run the pipeline</button>
+      </div>
+
+      <div class="work-cols">
+        <div>
+          <h4>Agentic engineering</h4>
+          <ul>
+            <li><b>Real-Time Radar:</b> brought Claude Skills agentic workflows into the development of this internal intelligence platform, and contributed to its core framework and scoring architecture.</li>
+            <li><b>Made a metric explainable:</b> replaced an LLM-judged video pacing score with a deterministic clips-per-minute calculation that is reliable and easy to explain.</li>
+            <li><b>Conversational AI delivery:</b> took a client deployment through to final delivery, told real bugs apart from model limits, restored stable behaviour, and scoped latency work as a follow-on.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>BI and data engineering</h4>
+          <ul>
+            <li><b>Power BI, wireframe to handover:</b> budget pipeline from Apps Script to Google Sheets to BigQuery to Power BI, with the data model, DAX measures and documentation. I presented it to the client and added daily granularity and filters from their feedback.</li>
+            <li><b>Looker fixes:</b> resolved duplicate records, account totals, transaction counts and KPI calculations in client LookML dashboards. The client gave positive feedback.</li>
+            <li><b>Multi-platform marketing model:</b> pulled data from Google Marketing Platform and Meta into one unified reporting model.</li>
+            <li><b>Healthcare dashboards:</b> added AI usage tracking, location filters and a redesigned user segmentation view.</li>
+            <li><b>Now:</b> in discovery for an enterprise data and platform migration.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head prev-job">
+        <h2>Before that: 2X Marketing</h2>
+        <p>Four years running the data layer behind marketing and sales analytics: warehouse migrations, ETL and API pipelines, and the dashboards on top.</p>
       </div>
       <div class="impact">
         <div class="race" aria-label="Pipeline refresh time, before and after optimisation">
@@ -311,7 +388,7 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
           <div><span class="big">3</span><p>cloud warehouses (BigQuery, Databricks, Snowflake) in multi-workspace migrations I led, with Power BI models redesigned on top.</p></div>
           <div><span class="big">20×</span><p>faster refreshes after reworking SQL transformations and warehouse workloads.</p></div>
           <div><span class="big">AI</span><p>in production analytics: predictive lead scoring, forecasting and automation projects for client revenue teams.</p></div>
-          <div><span class="big">Team</span><p>I lead a sub-team, mentor engineers, run hiring, and wrote the competency framework they grow against.</p></div>
+          <div><span class="big">Team</span><p>Led a sub-team, mentored engineers, ran hiring, and wrote the competency framework they grow against.</p></div>
         </div>
       </div>
     </div>
@@ -405,7 +482,7 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
         <article class="proj" data-ai="workflow">
           <div class="tags"><span class="tag tag-ai">Claude Code</span></div>
           <h3>Campaign Tracker</h3>
-          <p class="what">A record-keeper for long board game campaigns like Gloomhaven or Stonesaga. Characters, custom stats, item market, skill and tech trees, map notes. Nothing is tied to one game's rules.</p>
+          <p class="what">A record-keeper for long board game campaigns like Gloomhaven or Arydia. Characters, custom stats, item market, skill and tech trees, map notes. Nothing is tied to one game's rules.</p>
           <p class="ai-note"><b>AI does:</b> Claude Code builds features to a written spec, with a smoke test run before each deploy.</p>
           <p class="stack">FastAPI · Supabase · vanilla JS · Render · 50 commits</p>
         </article>
@@ -435,11 +512,12 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
     <div class="wrap">
       <div class="sec-head"><h2>Toolbox</h2></div>
       <div class="skills">
-        <div><h3>Data engineering</h3><ul><li>BigQuery (GCP)</li><li>Databricks</li><li>Snowflake</li><li>Data modelling</li><li>ETL / ELT</li><li>API integration</li><li>Data governance</li></ul></div>
-        <div><h3>Business intelligence</h3><ul><li>Power BI</li><li>DAX</li><li>Power Query</li><li>Dataflows</li><li>Reporting automation</li></ul></div>
+        <div><h3>Generative AI</h3><ul><li>Gemini</li><li>Veo</li><li>Omni</li><li>Nanobanana</li><li>Claude Skills</li><li>Claude Code</li><li>Agentic workflows</li></ul></div>
+        <div><h3>Google Cloud</h3><ul><li>Cloud Run</li><li>Eventarc</li><li>Docker</li><li>BigQuery</li><li>Apps Script</li></ul></div>
+        <div><h3>Data engineering</h3><ul><li>Databricks</li><li>Snowflake</li><li>Data modelling</li><li>ETL / ELT</li><li>API integration</li><li>Data governance</li></ul></div>
+        <div><h3>Business intelligence</h3><ul><li>Power BI</li><li>DAX</li><li>Power Query</li><li>Looker</li><li>LookML</li><li>Reporting automation</li></ul></div>
         <div><h3>Languages</h3><ul><li>SQL (advanced)</li><li>Python</li><li>JavaScript</li><li>PHP</li><li>HTML / CSS</li><li>Java</li></ul></div>
-        <div><h3>Marketing & CRM</h3><ul><li>Marketo</li><li>Salesforce</li><li>HubSpot</li><li>Google Analytics</li><li>Tag Manager</li></ul></div>
-        <div><h3>AI-assisted building</h3><ul><li>Claude Code</li><li>Agent workflows</li><li>Gemini API</li><li>Spec-first, TDD</li><li>ADRs</li></ul></div>
+        <div><h3>Marketing platforms</h3><ul><li>Google Marketing Platform</li><li>Campaign Manager</li><li>Meta</li><li>Marketo</li><li>Salesforce</li><li>HubSpot</li><li>Google Analytics</li></ul></div>
         <div><h3>Shipping</h3><ul><li>FastAPI</li><li>Supabase</li><li>Cloudflare Workers + D1</li><li>Render</li><li>Pyodide</li><li>Git</li></ul></div>
       </div>
       <div class="edu">
@@ -453,7 +531,7 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
   <section id="contact" class="contact">
     <div class="wrap">
       <h2>Let's talk data, or board games.</h2>
-      <p>Open to data engineering and analytics engineering roles, and happy to walk through any of these builds live.</p>
+      <p>Happy to talk about BI, GenAI pipelines or agentic workflows, and to walk through any of these builds live.</p>
       <div class="contact-row">
         <span class="email" id="email">radenameerh@gmail.com</span>
         <button class="copy" id="copyBtn" type="button">Copy email</button>
@@ -505,8 +583,20 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
         ["review", "approve the merge", "self-review, screenshots"],
       ], jump: "#ai",
     },
+    genai: {
+      sql: "SELECT stage, model_or_service\nFROM monks.glasscutter\nORDER BY step;",
+      cols: ["stage", "model_or_service"],
+      rows: [
+        ["trigger", "Google Sheets + Eventarc"],
+        ["outpaint 9:16", "Nanobanana"],
+        ["scene + depth", "Gemini"],
+        ["video", "Veo or Omni"],
+        ["runtime", "Docker on Cloud Run"],
+        ["publish", "YouTube Shorts"],
+      ], jump: "#work",
+    },
     impact: {
-      sql: "SELECT metric, before, after\nFROM day_job.wins;",
+      sql: "SELECT metric, before, after\nFROM twox_marketing.wins;",
       cols: ["metric", "before", "after"],
       rows: [
         ["pipeline refresh", "5+ hours", "< 15 min"],
@@ -518,7 +608,8 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
       sql: "SELECT years, role, company\nFROM career\nORDER BY start DESC;",
       cols: ["years", "role", "company"],
       rows: [
-        ["2025–now", "Senior Data Operation Specialist", "2X Marketing"],
+        ["2026–now", "Senior Data Engineer", ".Monks"],
+        ["2025–26", "Senior Data Operation Specialist", "2X Marketing"],
         ["2024–25", "Data Operation Specialist", "2X Marketing"],
         ["2022–24", "Data Operation Associate", "2X Marketing"],
         ["2021–22", "Assistant System Engineer Trainee", "TCS Malaysia"],
@@ -529,11 +620,11 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
       sql: "SELECT area, top_tools\nFROM skills;",
       cols: ["area", "top_tools"],
       rows: [
+        ["genai", "Gemini, Veo, Claude Skills"],
+        ["cloud", "Cloud Run, Eventarc, Docker"],
         ["warehouse", "BigQuery, Databricks, Snowflake"],
-        ["bi", "Power BI, DAX, Power Query"],
+        ["bi", "Power BI, Looker, DAX"],
         ["code", "SQL, Python, JavaScript"],
-        ["crm", "Marketo, Salesforce, HubSpot"],
-        ["ai", "Claude Code, Gemini API"],
       ], jump: "#skills",
     },
     contact: {
@@ -546,7 +637,7 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
       ], jump: "#contact",
     },
   };
-  const aliases = { project: "projects", repo: "projects", repos: "projects", build: "projects", claude: "ai", agent: "ai", workflow: "ai", work: "career", job: "career", jobs: "career", experience: "career", resume: "career", skill: "skills", tools: "skills", stack: "skills", email: "contact", hire: "contact", impact: "impact", pipeline: "impact", data: "impact" };
+  const aliases = { glasscutter: "genai", video: "genai", veo: "genai", gemini: "genai", monks: "genai", gen: "genai", project: "projects", repo: "projects", repos: "projects", build: "projects", claude: "ai", agent: "ai", workflow: "ai", work: "career", job: "career", jobs: "career", experience: "career", resume: "career", skill: "skills", tools: "skills", stack: "skills", email: "contact", hire: "contact", impact: "impact", pipeline: "impact", data: "impact" };
   const out = document.getElementById("out");
   const chips = document.getElementById("chips");
   const input = document.getElementById("q");
@@ -610,6 +701,44 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
     raf = requestAnimationFrame(tick);
   });
 
+  // glassCutter pipeline
+  const PIPE = [
+    ["Trigger", "Sheets + Eventarc", "A new row in Google Sheets fires an Eventarc trigger, which starts a run for that image.", "Google Sheets · Eventarc"],
+    ["Outpaint", "Nanobanana", "Nanobanana extends the photo out to a 9:16 vertical frame, so nothing important gets cropped.", "Nanobanana"],
+    ["Analyze", "Gemini", "Gemini reads the scene and its depth, and writes the direction the video model follows.", "Gemini"],
+    ["Generate", "Veo / Omni", "Veo generates the video. Omni is available as an alternative, so a single vendor never blocks the pipeline.", "Veo · Omni · Docker on Cloud Run"],
+    ["Review", "Verdicts", "A person reviews each AI output and gives a verdict. Those verdicts feed a dashboard used to improve the prompts.", "Review workflow · prompt analytics"],
+    ["Finish", "Post-production", "Intros, outros and a soundtrack are added in the app's post-production tools.", "Post-production tools"],
+    ["Publish", "YouTube Shorts", "The finished video goes straight to YouTube Shorts, and to Campaign Manager for vehicle campaigns.", "YouTube Shorts · Campaign Manager"],
+  ];
+  const pipe = document.getElementById("pipe"), pipeText = document.getElementById("pipeText"), pipeBtn = document.getElementById("pipeBtn");
+  let pCur = 0, pTimer;
+  const pShow = (i) => {
+    pCur = i;
+    [...pipe.children].forEach((b, j) => { b.setAttribute("aria-selected", String(j === i)); b.tabIndex = j === i ? 0 : -1; });
+    pipeText.innerHTML = `${esc(PIPE[i][2])}<span class="tools">${esc(PIPE[i][3])}</span>`;
+  };
+  const pStop = () => { clearTimeout(pTimer); pipe.classList.remove("playing"); pipeBtn.textContent = "Run the pipeline"; };
+  PIPE.forEach(([t, s], i) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "pipe-stage"; b.role = "tab";
+    b.innerHTML = `<span class="n">${String(i + 1).padStart(2, "0")}</span><span class="t">${t}</span><span class="s">${s}</span>`;
+    b.addEventListener("click", () => { pStop(); pShow(i); });
+    pipe.appendChild(b);
+  });
+  pipeBtn.addEventListener("click", () => {
+    if (pipe.classList.contains("playing")) { pStop(); return; }
+    pipe.classList.add("playing"); pipeBtn.textContent = "Stop";
+    const step = (i) => {
+      pShow(i);
+      // restart the bar animation on the newly selected stage
+      const el = pipe.children[i]; el.style.animation = "none"; void el.offsetWidth; el.style.animation = "";
+      pTimer = setTimeout(() => (i + 1 < PIPE.length ? step(i + 1) : pStop()), 1600);
+    };
+    step(0);
+  });
+  pShow(0);
+
   // workflow stepper
   const STEPS = [
     ["Grill", "I answer a long run of questions about a feature until every edge case has a decision.", "Asks one question at a time and writes the shared vocabulary into <code>CONTEXT.md</code>. It never answers its own questions."],
@@ -654,7 +783,14 @@ footer { padding-block: 22px; font-size: var(--step--1); color: var(--muted); }
 
   // career accordion
   const JOBS = [
-    ["Sep 2025 – now", "Senior Data Operation Specialist", "2X Marketing", [
+    ["Jun 2026 – now", "Senior Data Engineer", ".Monks", [
+      "Designed and built glassCutter, an image-to-video pipeline: Sheets and Eventarc triggers, Nanobanana outpainting to 9:16, Gemini scene and depth analysis, and Veo video. Containerized with Docker and deployed on Cloud Run.",
+      "Built the web app around it: upload and step tracking, AI output review, a prompt analytics dashboard, post-production tools, and direct publishing to YouTube Shorts.",
+      "Extended glassCutter to vehicle content, integrated it with Campaign Manager, and added Omni as a second video model alongside Veo.",
+      "Brought Claude Skills agentic workflows into Real-Time Radar, an internal intelligence platform, and contributed to its core framework and scoring.",
+      "Delivered Power BI, Looker and BigQuery reporting for several enterprise clients, from wireframe and data model to client handover.",
+    ]],
+    ["Sep 2025 – May 2026", "Senior Data Operation Specialist", "2X Marketing", [
       "Led multi-workspace migrations across BigQuery, Databricks and Snowflake, and redesigned the Power BI data models and governance on top.",
       "Cut pipeline refresh from more than 5 hours to under 15 minutes by optimising SQL transformations and warehouse workloads, and automated away the manual steps.",
       "Built reusable ETL and API pipeline frameworks across the warehouses.",
